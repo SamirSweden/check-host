@@ -24,7 +24,7 @@ export default function Login() {
     setTimeout(() => {
       setLoading(false);
       router.push('/panel');
-    },2000)
+    },3000)
   }
 
   return (
@@ -43,10 +43,9 @@ export default function Login() {
           />
           <Button
             onClick={handleNext}
-            color="primary"
             fullWidth
             size="lg"
-            className="transition-all duration-300"
+            className="transition-all duration-300 bg-white text-black"
           >
             Submit
           </Button>
@@ -65,13 +64,10 @@ export default function Login() {
             onClick={handleRedirect}
             fullWidth
             size="lg"
-            className="transition-all duration-300 bg-blue-500"
+            className="transition-all duration-300 bg-white text-black"
           >
             {loading ? (
-              <Spinner 
-                size="sm" 
-                color="white"
-              />
+              <Spinner classNames={{label: "text-foreground mt-1 text-white "}} variant="dots" />
             ) : (
               "Login"
             )}
