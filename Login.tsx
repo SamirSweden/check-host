@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { Input } from "@heroui/input"; 
 import { Button } from "@heroui/button"
+import { Spinner } from "@heroui/spinner";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading , setLoading] = useState(false);
   const router = useRouter();
 
 
@@ -16,7 +18,13 @@ export default function Login() {
   };
 
   const handleRedirect = () => {
-    router.push('/panel');
+    setLoading(true);
+
+
+    setTimeout(() => {
+      setLoading(false);
+      router.push('/panel');
+    },2000)
   }
 
   return (
@@ -59,7 +67,14 @@ export default function Login() {
             size="lg"
             className="transition-all duration-300 bg-blue-500"
           >
-            Login
+            {loading ? (
+              <Spinner 
+                size="sm" 
+                color="white"
+              />
+            ) : (
+              "Login"
+            )}
           </Button>
         </>
       )}
